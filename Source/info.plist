@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.dotson.airplaytoggle</string>
+	<key>connections</key>
+	<dict>
+		<key>09BE490C-0DE2-47EB-B461-5A574FBD3E1C</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>717045E8-FACC-4654-B204-3857425CDC95</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>20241E62-546E-4F1B-B49F-4917E4B9A948</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>FC827824-9081-477E-B913-8B1F40B12ABC</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>38FF712E-4862-4573-8F73-9F604CC6B091</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>FC827824-9081-477E-B913-8B1F40B12ABC</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>717045E8-FACC-4654-B204-3857425CDC95</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>163886F2-A63F-4FA8-ACEA-4E01C1712522</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>F0F69458-30BF-4481-BD41-87A473E23A9E</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>EB786CAF-8AA6-4866-A84C-B7301B3357F7</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>FC827824-9081-477E-B913-8B1F40B12ABC</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>F0F69458-30BF-4481-BD41-87A473E23A9E</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>FC827824-9081-477E-B913-8B1F40B12ABC</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>FC827824-9081-477E-B913-8B1F40B12ABC</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>5FCDDED3-9F96-4685-B23B-0E3A3D2AC8A3</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>C. Dotson</string>
+	<key>description</key>
+	<string>Toggle the state of your Airplay devices.</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>iTunes Airplay Toggle</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>script</key>
+				<string># THESE VARIABLES MUST BE SET. SEE THE ONEUPDATER README FOR AN EXPLANATION OF EACH.
+readonly remote_info_plist='https://raw.githubusercontent.com/dotson/iDevice-Sync/master/Source/info.plist'
+readonly workflow_url='https://github.com/dotson/iDevice-Sync/raw/master/iDevice%20Sync.alfredworkflow'
+readonly download_type='github_release'
+readonly frequency_check='4'
+
+# FROM HERE ON, CODE SHOULD BE LEFT UNTOUCHED!
+function abort {
+  echo "${1}" &gt;&amp;2
+  exit 1
+}
+
+function url_exists {
+  curl --silent --location --output /dev/null --fail --range 0-0 "${1}"
+}
+
+function notification {
+  readonly local notificator="$(find . -type d -name 'Notificator.app')"
+  if [[ -n "${notificator}" ]]; then
+    "${notificator}/Contents/Resources/Scripts/notificator" --message "${1}" --title "${alfred_workflow_name}" --subtitle 'A new version is available'
+    return
+  fi
+
+  readonly local terminal_notifier="$(find . -type f -name 'terminal-notifier')"
+  if [[ -n "${terminal_notifier}" ]]; then
+    "${terminal_notifier}" -title "${alfred_workflow_name}" -subtitle 'A new version is available' -message "${1}"
+    return
+  fi
+
+  osascript -e "display notification \"${1}\" with title \"${alfred_workflow_name}\" subtitle \"A new version is available\""
+}
+
+# Local sanity checks
+readonly local_info_plist='info.plist'
+readonly local_version="$(/usr/libexec/PlistBuddy -c 'print version' "${local_info_plist}")"
+
+[[ -n "${local_version}" ]] || abort 'You need to set a workflow version in the configuration sheet.'
+[[ "${download_type}" =~ ^(direct|page|github_release)$ ]] || abort "'download_type' (${download_type}) needs to be one of 'direct', 'page', or 'github_release'."
+[[ "${frequency_check}" =~ ^[0-9]+$ ]] || abort "'frequency_check' (${frequency_check}) needs to be a number."
+
+# Check for updates
+if [[ $(find "${local_info_plist}" -mtime +"${frequency_check}"d) ]]; then
+  if ! url_exists "${remote_info_plist}"; then abort "'remote_info_plist' (${remote_info_plist}) appears to not be reachable."; fi # Remote sanity check
+
+  readonly tmp_file="$(mktemp)"
+  curl --silent --location --output "${tmp_file}" "${remote_info_plist}"
+  readonly remote_version="$(/usr/libexec/PlistBuddy -c 'print version' "${tmp_file}")"
+
+  if [[ "${local_version}" == "${remote_version}" ]]; then
+    touch "${local_info_plist}" # Reset timer by touching local file
+    exit 0
+  fi
+
+  if [[ "${download_type}" == 'page' ]]; then
+    notification 'Opening download page…'
+    open "${workflow_url}"
+    exit 0
+  fi
+
+  download_url="$([[ "${download_type}" == 'github_release' ]] &amp;&amp; curl --silent "https://api.github.com/repos/${workflow_url}/releases/latest" | grep 'browser_download_url' | head -1 | sed -E 's/.*browser_download_url": "(.*)"/\1/' || echo "${workflow_url}")"
+
+  if url_exists "${download_url}"; then
+    notification 'Downloading and installing…'
+    curl --silent --location --output "${HOME}/Downloads/${alfred_workflow_name}.alfredworkflow" "${download_url}"
+    open "${HOME}/Downloads/${alfred_workflow_name}.alfredworkflow"
+  else
+    abort "'workflow_url' (${download_url}) appears to not be reachable."
+  fi
+fi</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>163886F2-A63F-4FA8-ACEA-4E01C1712522</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>Airplay Device Toggled.</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>5FCDDED3-9F96-4685-B23B-0E3A3D2AC8A3</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>0</integer>
+				<key>hotmod</key>
+				<integer>1310720</integer>
+				<key>hotstring</key>
+				<string>A</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>09BE490C-0DE2-47EB-B461-5A574FBD3E1C</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>escaping</key>
+				<integer>4</integer>
+				<key>queuedelaycustom</key>
+				<integer>1</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Getting available Airplay devices...</string>
+				<key>script</key>
+				<string>set workflowFolder to do shell script "pwd"set wlib to load script POSIX file (workflowFolder &amp; "/q_workflow.scpt")set wf to wlib's new_workflow()add_result of wf without isValid given theUid:"", theArg:"", theTitle:"Available AirPlay Devices:", theAutocomplete:"", theSubtitle:"Select to toggle state.", theIcon:"icon.png", theType:""tell application "iTunes"		set apDevices to (get name of every AirPlay device)	set apNames to {}	set apSelectedBool to {}	set apSelected to {}		repeat with i from 1 to length of apDevices		set thisDevice to item i of apDevices				set thisName to thisDevice as string		set the end of apNames to thisName		set thisBool to selected of AirPlay device thisDevice		set the end of apSelectedBool to thisBool		if thisBool is true then			set thisSel to "On"			set the end of apSelected to thisSel		else			set thisSel to "Off"			set the end of apSelected to thisSel		end if				add_result of wf with isValid given theUid:"", theArg:thisName, theTitle:thisName, theAutocomplete:"", theSubtitle:"Current State: " &amp; thisSel, theIcon:"icon.png", theType:""			end repeat	end tellwf's to_xml("")</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Toggle the playing state of your Airplay devices.</string>
+				<key>title</key>
+				<string>iTunes Airplay Toggle</string>
+				<key>type</key>
+				<integer>6</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>F0F69458-30BF-4481-BD41-87A473E23A9E</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>4</integer>
+				<key>script</key>
+				<string>set workflowFolder to do shell script "pwd"set wlib to load script POSIX file (workflowFolder &amp; "/q_workflow.scpt")set wf to wlib's new_workflow()set query to "{query}"tell application "iTunes"		set apDevices to (get name of every AirPlay device)		repeat with i from 1 to length of apDevices		set thisDevice to item i of apDevices		set thisName to thisDevice as string				if thisName is query then						set oldState to selected of AirPlay device thisDevice			set newState to (not oldState)			set selected of AirPlay device thisDevice to newState			if newState is true then				set newState to "On"			else				set newState to "Off"			end if						return thisName &amp; ": " &amp; newState					end if	end repeat	end tell</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>6</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>FC827824-9081-477E-B913-8B1F40B12ABC</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.junction</string>
+			<key>uid</key>
+			<string>717045E8-FACC-4654-B204-3857425CDC95</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>Computer</string>
+				<key>argumenttype</key>
+				<integer>3</integer>
+				<key>triggerid</key>
+				<string>aptoggle1</string>
+				<key>triggername</key>
+				<string>Computer</string>
+				<key>workflowonly</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.remote</string>
+			<key>uid</key>
+			<string>20241E62-546E-4F1B-B49F-4917E4B9A948</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>Stereo</string>
+				<key>argumenttype</key>
+				<integer>3</integer>
+				<key>triggerid</key>
+				<string>aptoggle2</string>
+				<key>triggername</key>
+				<string>Stereo</string>
+				<key>workflowonly</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.remote</string>
+			<key>uid</key>
+			<string>38FF712E-4862-4573-8F73-9F604CC6B091</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>Apple TV</string>
+				<key>argumenttype</key>
+				<integer>3</integer>
+				<key>triggerid</key>
+				<string>aptoggle3</string>
+				<key>triggername</key>
+				<string>Apple TV</string>
+				<key>workflowonly</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.remote</string>
+			<key>uid</key>
+			<string>EB786CAF-8AA6-4866-A84C-B7301B3357F7</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>iTunes Airplay Toggle
+=====================
+
+Alfred Workflow to toggle the playing state of your Airplay devices.</string>
+	<key>uidata</key>
+	<dict>
+		<key>09BE490C-0DE2-47EB-B461-5A574FBD3E1C</key>
+		<dict>
+			<key>xpos</key>
+			<integer>15</integer>
+			<key>ypos</key>
+			<integer>150</integer>
+		</dict>
+		<key>163886F2-A63F-4FA8-ACEA-4E01C1712522</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>12</integer>
+			<key>note</key>
+			<string>OneUpdater</string>
+			<key>xpos</key>
+			<integer>275</integer>
+			<key>ypos</key>
+			<integer>10</integer>
+		</dict>
+		<key>20241E62-546E-4F1B-B49F-4917E4B9A948</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>7</integer>
+			<key>xpos</key>
+			<integer>275</integer>
+			<key>ypos</key>
+			<integer>265</integer>
+		</dict>
+		<key>38FF712E-4862-4573-8F73-9F604CC6B091</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>7</integer>
+			<key>xpos</key>
+			<integer>275</integer>
+			<key>ypos</key>
+			<integer>385</integer>
+		</dict>
+		<key>5FCDDED3-9F96-4685-B23B-0E3A3D2AC8A3</key>
+		<dict>
+			<key>xpos</key>
+			<integer>670</integer>
+			<key>ypos</key>
+			<integer>150</integer>
+		</dict>
+		<key>717045E8-FACC-4654-B204-3857425CDC95</key>
+		<dict>
+			<key>xpos</key>
+			<integer>175</integer>
+			<key>ypos</key>
+			<integer>180</integer>
+		</dict>
+		<key>EB786CAF-8AA6-4866-A84C-B7301B3357F7</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>7</integer>
+			<key>note</key>
+			<string>Examples of Remote trigger inputs that can be added to the Alfred iOS app</string>
+			<key>xpos</key>
+			<integer>275</integer>
+			<key>ypos</key>
+			<integer>505</integer>
+		</dict>
+		<key>F0F69458-30BF-4481-BD41-87A473E23A9E</key>
+		<dict>
+			<key>xpos</key>
+			<integer>275</integer>
+			<key>ypos</key>
+			<integer>150</integer>
+		</dict>
+		<key>FC827824-9081-477E-B913-8B1F40B12ABC</key>
+		<dict>
+			<key>xpos</key>
+			<integer>495</integer>
+			<key>ypos</key>
+			<integer>150</integer>
+		</dict>
+	</dict>
+	<key>version</key>
+	<string>1.4.1</string>
+	<key>webaddress</key>
+	<string>https://github.com/dotson/iTunes-Airplay-Toggle</string>
+</dict>
+</plist>
