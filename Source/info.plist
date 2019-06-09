@@ -145,8 +145,8 @@
 				<string></string>
 				<key>script</key>
 				<string># THESE VARIABLES MUST BE SET. SEE THE ONEUPDATER README FOR AN EXPLANATION OF EACH.
-readonly remote_info_plist='https://raw.githubusercontent.com/dotson/iDevice-Sync/master/Source/info.plist'
-readonly workflow_url='https://github.com/dotson/iDevice-Sync/raw/master/iDevice%20Sync.alfredworkflow'
+readonly remote_info_plist='https://raw.githubusercontent.com/dotson/iTunes-Airplay-Toggle/master/Source/info.plist'
+readonly workflow_url='https://github.com/dotson/iTunes-Airplay-Toggle/raw/master/iTunes%20Airplay%20Toggle.alfredworkflow'
 readonly download_type='github_release'
 readonly frequency_check='4'
 
@@ -510,6 +510,8 @@ Alfred Workflow to toggle the playing state of your Airplay devices.</string>
 			<integer>150</integer>
 		</dict>
 	</dict>
+	<key>variablesdontexport</key>
+	<array/>
 	<key>version</key>
 	<string>1.4.1</string>
 	<key>webaddress</key>
