@@ -36,7 +36,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>1100E67F-554D-4D73-8B20-469D8D7AA625</string>
+				<string>31E2A4A9-4129-4B9B-BCA7-75511BE47698</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -59,6 +59,19 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
+				<string>31E2A4A9-4129-4B9B-BCA7-75511BE47698</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>31E2A4A9-4129-4B9B-BCA7-75511BE47698</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
 				<string>1100E67F-554D-4D73-8B20-469D8D7AA625</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -72,7 +85,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>1100E67F-554D-4D73-8B20-469D8D7AA625</string>
+				<string>31E2A4A9-4129-4B9B-BCA7-75511BE47698</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -85,7 +98,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>1100E67F-554D-4D73-8B20-469D8D7AA625</string>
+				<string>31E2A4A9-4129-4B9B-BCA7-75511BE47698</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -220,6 +233,29 @@ fi</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>4</integer>
+				<key>script</key>
+				<string>osascript ./RunScript.scpt "${1}"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>1100E67F-554D-4D73-8B20-469D8D7AA625</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
@@ -245,29 +281,6 @@ fi</string>
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
 			<string>09BE490C-0DE2-47EB-B461-5A574FBD3E1C</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>4</integer>
-				<key>script</key>
-				<string>osascript ./RunScript.scpt {query}</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>1100E67F-554D-4D73-8B20-469D8D7AA625</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -317,6 +330,24 @@ fi</string>
 			<string>2824B118-BE32-4712-8640-01D08915BB33</string>
 			<key>version</key>
 			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>{query}</string>
+				<key>variables</key>
+				<dict>
+					<key>toggledevice</key>
+					<string>{query}</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>31E2A4A9-4129-4B9B-BCA7-75511BE47698</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -399,18 +430,18 @@ Alfred Workflow to toggle the playing state of your Airplay devices.</string>
 		<key>1100E67F-554D-4D73-8B20-469D8D7AA625</key>
 		<dict>
 			<key>xpos</key>
-			<integer>405</integer>
+			<integer>535</integer>
 			<key>ypos</key>
-			<integer>150</integer>
+			<integer>145</integer>
 		</dict>
 		<key>20241E62-546E-4F1B-B49F-4917E4B9A948</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>7</integer>
 			<key>xpos</key>
-			<integer>205</integer>
+			<integer>30</integer>
 			<key>ypos</key>
-			<integer>265</integer>
+			<integer>280</integer>
 		</dict>
 		<key>2824B118-BE32-4712-8640-01D08915BB33</key>
 		<dict>
@@ -419,21 +450,28 @@ Alfred Workflow to toggle the playing state of your Airplay devices.</string>
 			<key>ypos</key>
 			<integer>150</integer>
 		</dict>
+		<key>31E2A4A9-4129-4B9B-BCA7-75511BE47698</key>
+		<dict>
+			<key>xpos</key>
+			<integer>420</integer>
+			<key>ypos</key>
+			<integer>175</integer>
+		</dict>
 		<key>38FF712E-4862-4573-8F73-9F604CC6B091</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>7</integer>
 			<key>xpos</key>
-			<integer>205</integer>
+			<integer>30</integer>
 			<key>ypos</key>
-			<integer>385</integer>
+			<integer>400</integer>
 		</dict>
 		<key>5FCDDED3-9F96-4685-B23B-0E3A3D2AC8A3</key>
 		<dict>
 			<key>xpos</key>
-			<integer>585</integer>
+			<integer>715</integer>
 			<key>ypos</key>
-			<integer>150</integer>
+			<integer>145</integer>
 		</dict>
 		<key>E6D13FF5-B985-40C4-8B47-D07D78EB77FD</key>
 		<dict>
@@ -442,7 +480,7 @@ Alfred Workflow to toggle the playing state of your Airplay devices.</string>
 			<key>note</key>
 			<string>OneUpdater</string>
 			<key>xpos</key>
-			<integer>405</integer>
+			<integer>380</integer>
 			<key>ypos</key>
 			<integer>10</integer>
 		</dict>
@@ -453,15 +491,18 @@ Alfred Workflow to toggle the playing state of your Airplay devices.</string>
 			<key>note</key>
 			<string>Examples of Remote trigger inputs that can be added to the Alfred iOS app</string>
 			<key>xpos</key>
-			<integer>205</integer>
+			<integer>30</integer>
 			<key>ypos</key>
-			<integer>505</integer>
+			<integer>520</integer>
 		</dict>
 	</dict>
-	<key>variablesdontexport</key>
-	<array/>
+	<key>variables</key>
+	<dict>
+		<key>toggledevice</key>
+		<string></string>
+	</dict>
 	<key>version</key>
-	<string>1.5</string>
+	<string>1.5.1</string>
 	<key>webaddress</key>
 	<string>https://github.com/dotson/iTunes-Airplay-Toggle</string>
 </dict>
