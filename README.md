@@ -2,6 +2,9 @@ iTunes Airplay Toggle
 =====================
 
 Alfred Workflow to toggle the playing state of your Airplay devices.
+
+This version is compatible with Alfred 5 (1.6)
+
 Starting with version 1.5 this workflow works in Music on Catalina.
 
 Update in version 1.5.2:
