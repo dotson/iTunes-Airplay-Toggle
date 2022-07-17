@@ -139,7 +139,7 @@
 				<string># THESE VARIABLES MUST BE SET. SEE THE ONEUPDATER README FOR AN EXPLANATION OF EACH.
 readonly remote_info_plist='https://raw.githubusercontent.com/dotson/iTunes-Airplay-Toggle/master/Source/info.plist'
 readonly workflow_url='https://github.com/dotson/iTunes-Airplay-Toggle/raw/master/iTunes%20Airplay%20Toggle.alfredworkflow'
-readonly download_type='github_release'
+readonly download_type='direct'
 readonly frequency_check='4'
 
 # FROM HERE ON, CODE SHOULD BE LEFT UNTOUCHED!
@@ -488,12 +488,11 @@ end tell</string>
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>iTunes Airplay Toggle
-=====================
+	<string># iTunes Airplay Toggle
 
-Alfred Workflow to toggle the playing state of your Airplay devices.
+*Alfred Workflow to toggle the playing state of your Airplay devices.*
 
-This version is compatible with Alfred 5.
+**Starting with version 1.6.0, this workflow is compatible with Alfred 5.**
 
 The default method is "toggle". This will toggle the state for only the selected device. The typical use for this would be if you have more than one device that you like to have turned ON at the same time (i.e., listening in the main room and a second room).
 
@@ -608,7 +607,7 @@ You can always choose to use the non-default method at any time by actioning on 
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>1.6.0</string>
+	<string>1.6.1</string>
 	<key>webaddress</key>
 	<string>https://github.com/dotson/iTunes-Airplay-Toggle</string>
 </dict>
