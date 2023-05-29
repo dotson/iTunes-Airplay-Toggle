@@ -17,7 +17,7 @@ on run argv
 	set icon_on to "Icons/volume_up.png"
 	set icon_off to "Icons/volume_mute.png"
 
-	add_result of wf without isValid given theUid:"", theArg:"", theTitle:"Available AirPlay Devices:", theAutocomplete:"", theSubtitle:"Select to toggle state via default method: " & action, theIcon:icon, theType:"", theQuicklookurl:""
+	add_result of wf without isValid given theUid:"", theArg:"", theTitle:"Available AirPlay Devices:", theAutocomplete:"", theSubtitle:"Select to change state via default method: " & action, theIcon:icon, theType:"", theQuicklookurl:""
 	
 	tell application "Music"
 		
