@@ -2,7 +2,7 @@
 
 *Alfred Workflow to toggle the playing state of your Airplay devices.*
 
-**Starting with version 1.6.0, this workflow is compatible with Alfred 5.**
+**Starting with version 1.7.0, this workflow is compatible with the Alfred Workflow Gallery.**
 
 The default method is "toggle". This will toggle the state for only the selected device. The typical use for this would be if you have more than one device that you like to have turned ON at the same time (i.e., listening in the main room and a second room).
 
