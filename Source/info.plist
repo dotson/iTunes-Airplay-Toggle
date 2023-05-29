@@ -432,7 +432,9 @@ The default method is "toggle". This will toggle the state for only the selected
 
 If you prefer to use only one device at a time, change the default method in the variable window to "select". This will toggle ON the selected device and toggle OFF all the others. The typical use for this would be if you prefer to listen on only one device at a time (i.e., listening through computer speakers or headphones).
 
-You can always choose to use the non-default method at any time by actioning on the device while pressing the 'option' key. This will cause Alfred to run whichever method is not the default.</string>
+Two modifier actions are provided:
+1. You can choose to use the non-default method at any time by actioning on the device while pressing the 'option' key. This will cause Alfred to run whichever method is not the default.
+2. Holding 'control' will allow you to action a device without closing the Alfred window. This works well if you're often toggling more than one device at a time. The 'esc' key will need to be hit when you're done.</string>
 	<key>uidata</key>
 	<dict>
 		<key>02000A10-FAFC-41D3-A631-4A2DFE3472ED</key>
@@ -557,8 +559,6 @@ You can always choose to use the non-default method at any time by actioning on 
 			<string>default_action</string>
 		</dict>
 	</array>
-	<key>variablesdontexport</key>
-	<array/>
 	<key>version</key>
 	<string>1.7.0</string>
 	<key>webaddress</key>
